@@ -2,7 +2,7 @@ import polars as pl
 
 def process_data(input_file, output_file, col_name):
     # Read the CSV file into a Polars DataFrame
-    from sklearn.datasets import load_breast_cancer
+
     df = pl.read_csv(input_file)
     
     # Create a new column 'processed_column' by multiplying 'value' by 2
