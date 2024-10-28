@@ -30,9 +30,12 @@ jobs:
           override: true
 
       - name: Build Rust project
-        run: cargo build --release
+        run: |
+          cd data_processing_rust
+          cargo build --release
 
       - name: Run Rust script
         run: |
+          cd data_processing_rust
           cargo run --release
 
