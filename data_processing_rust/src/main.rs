@@ -1,22 +1,35 @@
-use std::error::Error;
 use polars::prelude::*;
+use std::error::Error;
+use std::fs::File;
 
-fn process_data(input_file: &str, output_file: &str) -> Result<(), Box<dyn Error>> {
+pub fn process_data(input_file: &str, output_file: &str, col_name: &str) -> Result<(), Box<dyn Error>> {
     // Read CSV into a DataFrame
-    let mut df = CsvReader::from_path(input_file)?
+    let df = CsvReader::from_path(input_file)?
         .infer_schema(None)
         .has_header(true)
         .finish()?;
 
     // Perform data processing
-    df = df.lazy()
-        .with_column((col("value") * lit(2)).alias("processed_column"))
+    let df = df
+        .lazy()
+        .with_column(
+            col(col_name)
+                .fill_null(lit(0))
+                .mul(lit(2))
+                .alias("processed_column"),
+        )
         .collect()?;
 
     // Write DataFrame to CSV
-    CsvWriter::new(std::fs::File::create(output_file)?)
+    let mut file = File::create(output_file)?;
+    CsvWriter::new(&mut file)
         .has_header(true)
-        .finish(&mut df)?;
+        .finish(&df)?;
 
+    Ok(())
+}
+
+fn main() -> Result<(), Box<dyn Error>> {
+    process_data("data/input.csv", "output.csv")?;
     Ok(())
 }
