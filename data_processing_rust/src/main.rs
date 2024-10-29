@@ -6,8 +6,8 @@ use std::path::PathBuf;
 fn main() -> Result<(), Box<dyn Error>> {
 
     let mut input_path = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-    input_path.pop()
-    input_path.push("data/input.csv")
+    input_path.pop();
+    input_path.push("data/input.csv");
 
     let mut output_path = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     output_path.pop(); // Move up one directory level
