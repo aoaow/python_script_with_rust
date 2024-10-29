@@ -1,5 +1,5 @@
 # python_script_with_rust
-[![CI](https://github.com/aoaow/python_script_with_rust/actions/workflows/main.yml/badge.svg)](https://github.com/aoaow/python_script_with_rust/actions/workflows/ci.yml)
+[![CI](https://github.com/aoaow/python_script_with_rust/actions/workflows/ci.yml/badge.svg)](https://github.com/aoaow/python_script_with_rust/actions/workflows/ci.yml)
 
 ## Introduction
 
