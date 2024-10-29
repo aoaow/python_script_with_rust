@@ -5,6 +5,11 @@
 
 This project showcases the rewrite of a Python data processing script in Rust, highlighting improvements in speed and resource usage.
 
+## Features
+
+- A python script to read dataset and transform one of its column
+- A rust application to show case the improvements compared to the script
+  
 ## Installation
 
 ### Python Script
@@ -28,7 +33,7 @@ cargo run --release
 
 ## Performance Comparison
 
-Rust signifantly reduced the time and resource used for data processing.
+Rust signifantly reduced the time and resource used for data processing via the time command.
 
 
 | Language | Execution Time (s) | Memory Usage (MB) |
